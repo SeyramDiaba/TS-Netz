@@ -2,8 +2,10 @@
 :root {
   --color-navy-900: #16324a;
   --color-navy-800: #1c3d59;
+  --color-slate-card: #52657f;
   --color-slate-600: #64748b;
   --color-slate-500: #7c8ba1;
+  --color-accent-cyan: #4fc3dc;
   --color-bg-light: #eef1f5;
   --color-bg-panel: #dfe4ea;
   --color-white: #ffffff;
@@ -123,13 +125,30 @@ button {
 }
 
 .logo {
-  font-size: 1.4rem;
-  font-weight: 700;
+  display: flex;
+  align-items: center;
   color: var(--color-navy-900);
 }
-.logo span { color: var(--color-slate-500); }
+.logo-mark { display: block; }
 .logo--light { color: var(--color-white); }
-.logo--light span { color: var(--color-slate-500); }
+
+.logo-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-white);
+  border-radius: 50%;
+  padding: 6px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
 
 .main-nav {
   display: flex;
@@ -337,63 +356,106 @@ button {
 .feature-card p { font-size: 0.82rem; }
 .feature-icon { font-size: 1.5rem; margin-bottom: 8px; }
 
-/* ===== 3. ABOUT ===== */
+/* ===== 2. ABOUT (about + why choose us + partners) ===== */
+.about-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(20px, 4vh, 40px);
+  height: 100%;
+}
+
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 28px;
-  align-items: center;
+  gap: 24px;
+  align-items: stretch;
 }
 
 .about-image {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: clamp(220px, 32vh, 300px);
+}
+
+.about-image-top,
+.about-image-bottom {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  height: 380px;
+  flex: 1;
 }
-.about-image img { width: 100%; height: 100%; object-fit: cover; }
-.about-image .play-btn {
+.about-image-top img,
+.about-image-bottom img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.about-image-top .play-btn {
   position: absolute;
-  top: 16px;
-  left: 16px;
+  top: 14px;
+  left: 14px;
 }
 
 .about-card {
-  background: var(--color-navy-900);
+  display: flex;
+  flex-direction: column;
+  background: var(--color-slate-card);
   color: var(--color-white);
-  padding: 32px;
+  padding: 26px;
   border-radius: 12px;
+  height: 100%;
 }
 .about-card h2, .about-card p { color: var(--color-white); }
-.about-card p { opacity: 0.85; margin-bottom: 20px; }
+.about-card p { opacity: 0.85; margin-bottom: 16px; font-size: 0.88rem; }
+.about-card .btn { margin-top: auto; align-self: flex-start; }
 
-.about-why h3 { margin-bottom: 8px; }
-.about-why > p { margin-bottom: 20px; font-size: 0.9rem; }
+.about-why {
+  background: var(--color-white);
+  border-radius: 12px;
+  padding: 26px;
+  box-shadow: 0 12px 30px rgba(22,50,74,0.08);
+  height: 100%;
+}
+.about-why h3 { margin-bottom: 6px; }
+.about-why > p { margin-bottom: 16px; font-size: 0.88rem; }
 
-.why-list { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.why-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
 .why-list li { display: flex; gap: 14px; align-items: flex-start; }
 .why-icon {
-  width: 36px; height: 36px;
+  width: 34px; height: 34px;
   border-radius: 8px;
   background: var(--color-bg-panel);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
-.why-list strong { display: block; color: var(--color-navy-900); font-size: 0.95rem; }
-.why-list p { font-size: 0.82rem; }
+.why-list strong { display: block; color: var(--color-navy-900); font-size: 0.92rem; }
+.why-list p { font-size: 0.8rem; }
 
-/* ===== 4. PARTNERS ===== */
-.partners-wrap { text-align: center; }
+/* ===== Partners (inside about panel) ===== */
+.partners-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(22,50,74,0.1);
+  flex-wrap: wrap;
+}
+.partners-text h3 { margin-bottom: 4px; font-size: 1.1rem; }
+.partners-text p { font-size: 0.85rem; margin: 0; }
+
 .partner-logos {
   display: flex;
-  justify-content: center;
-  gap: 60px;
-  margin-top: 32px;
+  align-items: center;
+  gap: 48px;
   flex-wrap: wrap;
 }
 .partner-logo {
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--color-slate-600);
   opacity: 0.7;
 }
